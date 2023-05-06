@@ -1,0 +1,8 @@
+ng g c comp_name -> creates component automatically //generate component
+ng g c comp_name --spec false -> to get rid of test files
+ng g c comp_name/child_comp
+
+npm install --save bootstrap -> --save as production dependency
+To add bootstrap dependency:
+under angular.json -> styles array add "node_modules/bootstrap/dist/css/bootstrap.min.css" 
+
