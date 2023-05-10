@@ -1,0 +1,11 @@
+.edit-button-parent{
+    width: 100%;
+    margin-top: 10px;
+}
+.edit-button{
+    display: flex;
+    width:100%;
+    justify-content: flex-start;
+    gap:10px;
+    align-items: center;
+}
