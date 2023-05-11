@@ -1,0 +1,87 @@
+Angular - Javascript Framework
+Uses Typescript - a Javascript Superset
+Build Client side web app - SPA
+Highly Scalable, High Performance
+Continously developed & supported by Google
+
+ test.component.ts:
+ import {EventEmitter} from '@angular/core';
+ data:string = "";
+ text:string = "";
+ @Output() someRandomEvent = new EventEmitter<{a:string, b:string}>();
+ 
+ //this function is called when button is clicked which has updated value of data and text
+ onSomeAddition(){
+    this.someRandomEvent.emit({
+        a: this.data,
+        b: this.text
+    })
+ }
+
+app.component.ts:
+ data:string = "";
+ text:string = "";
+someDataChangingFunction($event:{a:string, b:string}){
+    this.data = a,
+    this.text = b
+}
+
+app.component.html:
+<app-test (someRandomEvent)=""></app-test>
+
+//if you want to remove angular automatically adding attribute to css
+//add below property to the @Component
+encapsulation: ViewEncapsulation.None
+
+//how to get value using reference(@ViewChild)
+Approach-1
+<input type='text' #val/>
+<button (click)="someFunc(val)"></button>
+someFunc(val:HTMLInputElement){
+    //this will give the value if input field 
+    return val.value;
+}
+
+Approach-2
+<input type='text' #val/>
+<button (click)="someFunc()"></button>
+@ViewChild('val') textValue: ElementRef;
+someFunc(){
+    //this will give the value if input field 
+    return this.textValue.nativeElement.value;
+}
+
+
+//ng-content allow us to insert element inside the component declaration in the parent component
+test.component.html:
+<h1>Hey There</h1>
+<ng-content></ng-content>
+
+app.component.html:
+<app-test>
+<p>Hey There</p>
+</app-test>
+
+
+//Lifecycle:
+ngOnChanges -> Called after a bound input property changes -> properties with @Input value
+ngOnInit -> Called once the component is initialized
+ngDoCheck -> Called during every change detection run
+ngAfterContentInit -> Called after ng-content has been projected into the view
+ngAfterContentChecked -> Called everytime the projected content has been checked
+ngAferViewInit -> Called after the component's view(and child views) has been initialized 
+ngAferViewChecked -> Called everytime the view(and child views) has been checked
+ngOnDestroy -> Called once the componentis about to destroy 
+
+ngOnChanges:
+import {SimpleChanges} from '@angular/core';
+Implement OnChanges interface
+ngOnChanges(changes: SimpleChanges){
+    //gives previous value and updated value
+}
+
+ngOnDestroy:
+Just change the array so if the component is no longer part of the parent component then it is destroyed
+arr.splice(0,1);
+
+//@ViewChild is only accessible after ngAferViewInit 

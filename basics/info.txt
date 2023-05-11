@@ -1,6 +1,0 @@
-Angular - Javascript Framework
-Uses Typescript - a Javascript Superset
-Build Client side web app - SPA
-Highly Scalable, High Performance
-Continously developed & supported by Google
-
